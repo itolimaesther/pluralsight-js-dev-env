@@ -5,9 +5,12 @@
   "scripts": {
     "prestart": "babel-node buildScripts/startMessage.js",
     "start": "npm-run-all --parallel open:src",
-    "open:src": "node buildScripts/srcServer.js",
+    "open:src": "babel-node buildScripts/srcServer.js",
+    "lint": "esw webpack.config.* src buildScript --color",
+    "lint:watch": "npm run lint -- --watch",
     "localtunnel": "lt --port 3000",
-    "share": "npm-run-all --parallel open:src localtunnel"
+    "share": "npm-run-all --parallel open:src localtunnel",
+    "test": "mocha --reporter progress buildScripts/testSetup.js \"src/**/*.test.js\""
   },
   "author": "Cory House",
   "license": "MIT",
